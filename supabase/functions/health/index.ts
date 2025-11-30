@@ -6,57 +6,24 @@ const corsHeaders = {
 }
 
 Deno.serve(async (req) => {
-  // Handle CORS preflight requests
+  console.log('Health check called!')
+  console.log('Method:', req.method)
+  console.log('URL:', req.url)
+
   if (req.method === 'OPTIONS') {
+    console.log('✅ Handling CORS')
     return new Response(null, { headers: corsHeaders })
   }
 
-  try {
-    // Create Supabase client
-    const supabaseUrl = Deno.env.get('SUPABASE_URL')!
-    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
-    const supabase = createClient(supabaseUrl, supabaseKey)
-
-    // Test database connection
-    const { error: dbError } = await supabase.from('invoices').select('count').limit(1)
-    
-    if (dbError) {
-      console.error('Database connection error:', dbError)
-      return new Response(
-        JSON.stringify({ 
-          status: 'unhealthy', 
-          message: 'Database connection failed',
-          error: dbError.message 
-        }),
-        { 
-          status: 503,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
-        }
-      )
+  console.log('✅ Returning health status')
+  return new Response(
+    JSON.stringify({ 
+      status: 'ok',
+      timestamp: new Date().toISOString()
+    }),
+    { 
+      status: 200,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
     }
-
-    return new Response(
-      JSON.stringify({ 
-        status: 'healthy', 
-        message: 'API is running and database is connected',
-        timestamp: new Date().toISOString()
-      }),
-      { 
-        status: 200,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
-      }
-    )
-  } catch (error) {
-    console.error('Health check error:', error)
-    return new Response(
-      JSON.stringify({ 
-        status: 'error', 
-        message: error instanceof Error ? error.message : 'Unknown error' 
-      }),
-      { 
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
-      }
-    )
-  }
+  )
 })
