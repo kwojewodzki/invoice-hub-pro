@@ -91,6 +91,7 @@ Deno.serve(async (req) => {
 
     // PUT/PATCH - Update invoice
     if (req.method === 'PUT' || req.method === 'PATCH') {
+      console.log('Updating invoice ID:', invoiceId);
       if (!invoiceId || invoiceId === 'invoices') {
         return new Response(
           JSON.stringify({ error: 'Invoice ID required for update' }),
