@@ -30,12 +30,11 @@ async function deleteInvoice(id?: any) {
     }
 
 // Helpers
-async function invokeInvoices(method: string, body?: any, id?: string) {
+async function invokeInvoices(method: any, body?: any, id?: string) {
     let url = "/invoices";
     if (id) {
         url = url.concat('/',id);
     }
-    console.log(url);
   return client.functions.invoke(url, {
     method,
     body,
@@ -77,7 +76,6 @@ Deno.test("POST /invoices → should create invoice", async () => {
 
 Deno.test("PUT /invoices/:id → should update invoice", async () => {
     const { data: created } = await invokeInvoices("POST", newInvoice);
-    console.log(created.id);
     const { data, error } = await invokeInvoices(
         "PUT",
         JSON.stringify({ amount: 1234 }),
