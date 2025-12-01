@@ -1,0 +1,24 @@
+{
+  "name": "invoice-hub-pro",
+  "version": "1.0.0",
+  "description": "Invoice management service",
+  "scripts": {
+    "install": "cd frontend && npm install",
+    "dev:backend": "npm run dev:supabase & npm run dev:functions",
+    "dev:supabase": "npx supabase start",
+    "dev:functions": "sleep 3 && npx supabase functions serve",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "test": "npx deno test --allow-all supabase/functions/tests/",
+    "lint": "cd frontend && npm run lint",
+    "docs": "npx @redocly/cli preview-docs docs/openapi.yaml",
+    "supabase:start": "npx supabase start",
+    "supabase:stop": "npx supabase stop",
+    "supabase:status": "npx supabase status",
+    "deploy:preview": "echo 'Run deployment commands for your chosen cloud provider'",
+    "deploy:prod": "echo 'Run production deployment'"
+  },
+  "keywords": ["invoice", "supabase", "react"],
+  "author": "Konrad Wojewódzki",
+  "license": "MIT"
+}

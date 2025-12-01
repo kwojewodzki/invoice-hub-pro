@@ -1,80 +1,98 @@
-# Welcome to your Lovable project
+# Invoice Hub Pro
 
-## Project info
+Simple invoice management service built with Supabase, React, and Vite.
 
-**URL**: https://lovable.dev/projects/bbcf004c-5044-4599-89c2-167f7d6506fe
+## Tech Stack
+- **Frontend**: React + Vite + TypeScript
+- **Backend**: Supabase Edge Functions (Deno)
+- **Database**: PostgreSQL (Supabase)
+- **Deployment**: Supabase Cloud + Vercel
 
-## How can I edit this code?
+## Local Development
 
-There are several ways of editing your application.
+### Prerequisites
+- Node.js 20+
+- Docker Desktop
+- Supabase CLI
 
-**Use Lovable**
+### Setup
+```bash
+# Install dependencies
+npm install
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/bbcf004c-5044-4599-89c2-167f7d6506fe) and start prompting.
+# Start Supabase
+supabase start
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development servers
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Access:
+- Frontend: http://localhost:8080
+- API: http://localhost:54321/functions/v1
+- Supabase Studio: http://localhost:54323
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Run Tests
+```bash
+npm test
+```
 
-**Use GitHub Codespaces**
+## API Documentation
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Open `docs/openapi.yaml` in Swagger Editor: https://editor.swagger.io
 
-## What technologies are used for this project?
+## Deployment
 
-This project is built with:
+See [DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instructions.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Quick Deploy (Supabase + Vercel)
 
-## How can I deploy this project?
+1. Deploy database & functions:
+```bash
+supabase login
+supabase link --project-ref your-ref
+supabase db push
+supabase functions deploy
+```
 
-Simply open [Lovable](https://lovable.dev/projects/bbcf004c-5044-4599-89c2-167f7d6506fe) and click on Share -> Publish.
+2. Deploy frontend to Vercel:
+   - Push to GitHub
+   - Import to Vercel
+   - Set environment variables
+   - Deploy
 
-## Can I connect a custom domain to my Lovable project?
+## Environment Variables
 
-Yes, you can!
+### Frontend
+```bash
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_anon_key
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Backend (Supabase Secrets)
+```bash
+supabase secrets set KEY=value
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Project Structure
+```
+invoice-hub-pro/
+├─ frontend/          # React app
+├─ supabase/
+│  ├─ functions/     # Edge Functions
+│  └─ migrations/    # Database migrations
+├─ docs/             # API documentation
+├─ tests/            # Integration tests
+└─ scripts/          # Utility scripts
+```
 
-@TODO  
-Prepare project for deployment to chosen cloud (AWS/GCP/Azure/etc.)
+## AI Usage
+This project utilizes AI tools for the following purposes:
 
-Add brief deployment steps to README
+1. **Project template generation** – created with *Lovable*
+2. **Development script templates** – generated using *Claude*
+3. **Test suite templates** – generated using *Claude*
+4. **Documentation generation** – assisted by *Claude*
 
-Describe how AI tools were used in README
+## License
+MIT
