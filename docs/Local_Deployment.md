@@ -6,7 +6,7 @@ Before you begin, make sure you have the following installed:
 
 - **Node.js 20+** - [Download](https://nodejs.org/)
 - **Docker Desktop** - [Download](https://www.docker.com/products/docker-desktop/)
-- **Supabase CLI** - Install via npm: `npm install -g supabase`
+- **Supabase CLI** - Install via npm: `npm install supabase`
 - **Git** - [Download](https://git-scm.com/) - git bash was used instead of windows powershell
 
 ---
