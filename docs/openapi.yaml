@@ -3,7 +3,7 @@ info:
   title: Invoices API
   description: |
     RESTful API for invoice management built on Supabase Edge Functions.
-    
+
     ## Features
     - Retrieve list of invoices
     - Get single invoice by ID
@@ -11,10 +11,10 @@ info:
     - Update existing invoices
     - Delete invoices
     - Health check endpoint
-    
+
     ## Authentication
     API uses Supabase authentication. Include your API key in the `apikey` header.
-    
+
     ## CORS
     API supports CORS and accepts requests from any origin.
   version: 1.0.0
@@ -23,7 +23,7 @@ info:
     email: support@example.com
 
 servers:
-  - url: https://your-project.supabase.co/functions/v1
+  - url: http://127.0.0.1:54321/functions/v1
     description: Supabase production server
 
 tags:
@@ -41,7 +41,7 @@ paths:
       description: Checks if the API is running correctly and returns current timestamp
       operationId: healthCheck
       responses:
-        '200':
+        "200":
           description: API is running correctly
           content:
             application/json:
@@ -54,8 +54,8 @@ paths:
                   timestamp:
                     type: string
                     format: date-time
-                    example: '2024-01-15T10:30:00.000Z'
-    
+                    example: "2024-01-15T10:30:00.000Z"
+
     options:
       tags:
         - Health
@@ -63,7 +63,7 @@ paths:
       description: Handles CORS preflight requests
       operationId: healthCheckOptions
       responses:
-        '200':
+        "200":
           description: CORS headers
           headers:
             Access-Control-Allow-Origin:
@@ -88,16 +88,16 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: List of invoices retrieved successfully
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Invoice'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+                  $ref: "#/components/schemas/Invoice"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
       security:
         - ApiKeyAuth: []
 
@@ -119,18 +119,18 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/InvoiceCreate'
+              $ref: "#/components/schemas/InvoiceCreate"
       responses:
-        '201':
+        "201":
           description: Invoice created successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Invoice'
-        '400':
-          $ref: '#/components/responses/BadRequestError'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+                $ref: "#/components/schemas/Invoice"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
       security:
         - ApiKeyAuth: []
 
@@ -141,7 +141,7 @@ paths:
       description: Handles CORS preflight requests
       operationId: invoicesOptions
       responses:
-        '200':
+        "200":
           description: CORS headers
 
   /invoices/{invoiceId}:
@@ -166,16 +166,16 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Invoice retrieved successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Invoice'
-        '404':
-          $ref: '#/components/responses/NotFoundError'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+                $ref: "#/components/schemas/Invoice"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
       security:
         - ApiKeyAuth: []
 
@@ -204,20 +204,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/InvoiceUpdate'
+              $ref: "#/components/schemas/InvoiceUpdate"
       responses:
-        '200':
+        "200":
           description: Invoice updated successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Invoice'
-        '400':
-          $ref: '#/components/responses/BadRequestError'
-        '404':
-          $ref: '#/components/responses/NotFoundError'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+                $ref: "#/components/schemas/Invoice"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
       security:
         - ApiKeyAuth: []
 
@@ -246,20 +246,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/InvoiceUpdate'
+              $ref: "#/components/schemas/InvoiceUpdate"
       responses:
-        '200':
+        "200":
           description: Invoice updated successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Invoice'
-        '400':
-          $ref: '#/components/responses/BadRequestError'
-        '404':
-          $ref: '#/components/responses/NotFoundError'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+                $ref: "#/components/schemas/Invoice"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
       security:
         - ApiKeyAuth: []
 
@@ -284,7 +284,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Invoice deleted successfully
           content:
             application/json:
@@ -294,12 +294,12 @@ paths:
                   message:
                     type: string
                     example: Invoice deleted successfully
-        '400':
-          $ref: '#/components/responses/BadRequestError'
-        '404':
-          $ref: '#/components/responses/NotFoundError'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
       security:
         - ApiKeyAuth: []
 
@@ -316,7 +316,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: CORS headers
 
 components:
@@ -335,20 +335,20 @@ components:
           type: string
           format: uuid
           description: Unique invoice identifier
-          example: '123e4567-e89b-12d3-a456-426614174000'
+          example: "123e4567-e89b-12d3-a456-426614174000"
         invoice_number:
           type: string
           description: Invoice number
-          example: 'INV-2024-001'
+          example: "INV-2024-001"
         customer_name:
           type: string
           description: Customer name
-          example: 'Acme Corporation'
+          example: "Acme Corporation"
         customer_email:
           type: string
           format: email
           description: Customer email
-          example: 'contact@acme.com'
+          example: "contact@acme.com"
         amount:
           type: number
           format: float
@@ -357,22 +357,22 @@ components:
         currency:
           type: string
           description: Currency code
-          example: 'USD'
+          example: "USD"
         status:
           type: string
           enum: [draft, sent, paid, overdue, cancelled]
           description: Invoice status
-          example: 'sent'
+          example: "sent"
         issue_date:
           type: string
           format: date
           description: Invoice issue date
-          example: '2024-01-15'
+          example: "2024-01-15"
         due_date:
           type: string
           format: date
           description: Payment due date
-          example: '2024-02-15'
+          example: "2024-02-15"
         items:
           type: array
           description: Invoice line items
@@ -381,7 +381,7 @@ components:
             properties:
               description:
                 type: string
-                example: 'Web development services'
+                example: "Web development services"
               quantity:
                 type: number
                 example: 40
@@ -394,17 +394,17 @@ components:
         notes:
           type: string
           description: Additional notes
-          example: 'Payment terms: Net 30'
+          example: "Payment terms: Net 30"
         created_at:
           type: string
           format: date-time
           description: Record creation timestamp
-          example: '2024-01-15T10:30:00.000Z'
+          example: "2024-01-15T10:30:00.000Z"
         updated_at:
           type: string
           format: date-time
           description: Last update timestamp
-          example: '2024-01-15T10:30:00.000Z'
+          example: "2024-01-15T10:30:00.000Z"
 
     InvoiceCreate:
       type: object
@@ -416,33 +416,33 @@ components:
       properties:
         invoice_number:
           type: string
-          example: 'INV-2024-001'
+          example: "INV-2024-001"
         customer_name:
           type: string
-          example: 'Acme Corporation'
+          example: "Acme Corporation"
         customer_email:
           type: string
           format: email
-          example: 'contact@acme.com'
+          example: "contact@acme.com"
         amount:
           type: number
           format: float
           example: 1500.00
         currency:
           type: string
-          example: 'USD'
+          example: "USD"
         status:
           type: string
           enum: [draft, sent, paid, overdue, cancelled]
-          example: 'draft'
+          example: "draft"
         issue_date:
           type: string
           format: date
-          example: '2024-01-15'
+          example: "2024-01-15"
         due_date:
           type: string
           format: date
-          example: '2024-02-15'
+          example: "2024-02-15"
         items:
           type: array
           items:
@@ -458,7 +458,7 @@ components:
                 type: number
         notes:
           type: string
-          example: 'Payment terms: Net 30'
+          example: "Payment terms: Net 30"
 
     InvoiceUpdate:
       type: object
@@ -497,7 +497,7 @@ components:
         error:
           type: string
           description: Error message
-          example: 'Invoice not found'
+          example: "Invoice not found"
 
   responses:
     BadRequestError:
@@ -505,24 +505,24 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
-            error: 'Invoice ID required for update'
+            error: "Invoice ID required for update"
 
     NotFoundError:
       description: Resource not found
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
-            error: 'Invoice not found'
+            error: "Invoice not found"
 
     InternalServerError:
       description: Internal server error
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
-            error: 'An unexpected error occurred'
+            error: "An unexpected error occurred"
