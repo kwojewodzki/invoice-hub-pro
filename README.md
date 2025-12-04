@@ -75,6 +75,11 @@ This project utilizes AI tools for the following purposes:
 3. **Test suite templates** – generated using _Claude_
 4. **Documentation generation** – assisted by _Claude_
 
+## Author
+Konrad Wojewódzki
 ## License
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5e3e4771ebe14a4974a71a6ba591418e5cf7fe7f
 MIT
