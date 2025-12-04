@@ -7,7 +7,7 @@ Before you begin, make sure you have the following installed:
 - **Node.js 20+** - [Download](https://nodejs.org/)
 - **Docker Desktop** - [Download](https://www.docker.com/products/docker-desktop/)
 - **Supabase CLI** - Install via npm: `npm install -g supabase`
-- **Git** - [Download](https://git-scm.com/)
+- **Git** - [Download](https://git-scm.com/) - git bash was used instead of windows powershell
 
 ---
 
@@ -28,13 +28,7 @@ npm run install
 
 This will install all frontend dependencies.
 
-### 3. Initialize Supabase (first time only)
-
-```bash
-npx supabase init
-```
-
-### 4. Configure environment variables
+### 3. Configure environment variables
 
 Create environment files:
 
@@ -67,6 +61,11 @@ SUPABASE_ANON_KEY=your_anon_key_here
 
 1. Start Supabase: `npm run supabase:start`
 2. Copy the `publishable key` from the output (starts with `sb_publishable`)
+
+**To get your anon key:**
+
+1. Go to the [studio](http://127.0.0.1:54323/project/default?showConnect=true&connectTab=frameworks)
+2. Copy anon key from there
 
 ---
 
@@ -134,7 +133,7 @@ Once all services are running, you can access:
 
 - `GET /functions/v1/health` - Health check (no auth required)
 - `GET /functions/v1/invoices` - List all invoices (auth required)
-- `GET /functions/v1/invoices/{id}` - List invoice (auth required)
+- `GET /functions/v1/invoices/{id}` - Get invoice by ID (auth required)
 - `POST /functions/v1/invoices` - Create new invoice (auth required)
 - `DELETE /functions/v1/invoices/{id}` - Delete invoice (auth required)
 - `PUT /functions/v1/invoices/{id}` - Update invoice (auth required)
